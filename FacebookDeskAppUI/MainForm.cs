@@ -28,7 +28,7 @@ namespace FacebookDeskAppUI
         //------------------------  General Methods  ---------------------------//
         //----------------------------------------------------------------------//
         //----------------------------------------------------------------------//
-        private void setListBox<T>(ICollection<T> i_List, ListBox i_ListBox)
+        /*private void setListBox<T>(ICollection<T> i_List, ListBox i_ListBox)
         {
             lock(Sr_lock)
             {
@@ -36,6 +36,18 @@ namespace FacebookDeskAppUI
                 foreach(T elem in i_List)
                 {
                     i_ListBox.Items.Add(elem);
+                }
+            }
+        }*/
+
+        private void setListBox<T>(IEnumerator<T> i_PostsIterator, ListBox i_ListBox)
+        {
+            lock (Sr_lock)
+            {
+                i_ListBox.Items.Clear();
+                while(i_PostsIterator.MoveNext())
+                {
+                    i_ListBox.Items.Add(i_PostsIterator.Current);
                 }
             }
         }
@@ -51,21 +63,33 @@ namespace FacebookDeskAppUI
             if(listOfPosts != null)
             {
                 ICollection<PostWrapper> listOfPostsWrapper = generateListOfPostsWrappers(listOfPosts);
-                setListBox(listOfPostsWrapper, listBoxPosts);
+                setListBox(listOfPostsWrapper.GetEnumerator(), listBoxPosts);
             }
         }
 
-        private void setListBoxPostsByComments(string i_NumOfComments)
+       /* private void setListBoxPostsByComments(int i_NumOfComments)
         {
-            ICollection<Post> listOfPosts = m_LoggedInUserData.GetPostsByNumOfComments(i_NumOfComments);
+            
+            IStrategy strategy = m_LoggedInUserData.CreateStrategyByCategory(i_NumOfComments);
+            // ICollection<Post> listOfPosts = m_LoggedInUserData.GetPostsByNumOfComments(i_NumOfComments);
+            m_LoggedInUserData.PostsCollection.GetEnumerator(PostsCollection.IteratorType.COMMENTS, strategy);
             if(listOfPosts != null)
             {
                 ICollection<PostWrapper> listOfPostsWrapper = generateListOfPostsWrappers(listOfPosts);
-                setListBox(listOfPostsWrapper, listBoxPosts);
+                setListBox(listOfPostsWrapper.GetEnumerator(), listBoxPosts);
             }
+        }*/
+
+        private void setListBoxPosts(PostsCollection.IteratorType i_IteratorType, int i_Num)
+        {
+
+            IStrategy strategy = m_LoggedInUserData.CreateStrategyByCategory(i_Num);
+            // ICollection<Post> listOfPosts = m_LoggedInUserData.GetPostsByNumOfComments(i_NumOfComments);
+            IEnumerator<Post> postsIterator = m_LoggedInUserData.PostsCollection.GetEnumerator(i_IteratorType, strategy);
+            setListBox(postsIterator, listBoxPosts);
         }
 
-        private void setListBoxPostsByLikes(string i_NumOfLikes)
+       /* private void setListBoxPostsByLikes(int i_NumOfLikes)
         {
             ICollection<Post> listOfPosts = m_LoggedInUserData.GetPostsByNumOfLikes(i_NumOfLikes);
             if(listOfPosts != null)
@@ -73,17 +97,13 @@ namespace FacebookDeskAppUI
                 ICollection<PostWrapper> listOfPostsWrapper = generateListOfPostsWrappers(listOfPosts);
                 setListBox(listOfPostsWrapper, listBoxPosts);
             }
-        }
+        }*/
 
         private void setListBoxPostsByListOfAll()
         {
             listBoxPosts.Items.Clear();
-            ICollection<Post> listOfPosts = m_LoggedInUserData.FetchAllPosts();
-            if(listOfPosts != null)
-            {
-                ICollection<PostWrapper> listOfPostsWrapper = generateListOfPostsWrappers(listOfPosts);
-                setListBox(listOfPostsWrapper, listBoxPosts);
-            }
+            IEnumerator<Post> postsIterator = m_LoggedInUserData.PostsCollection.GetEnumerator();
+            setListBox(postsIterator, listBoxPosts);
         }
 
         private void listBoxPosts_SelectedIndexChanged(object sender, EventArgs e)
@@ -124,7 +144,7 @@ namespace FacebookDeskAppUI
         {
             try
             {
-                m_LoggedInUserData.FetchPostsByNumOfLikes();
+              //  m_LoggedInUserData.FetchPostsByNumOfLikes();
                 labelPostsSubFilter.Text = "Filter by likes";
                 setComboboxPostsSubFilterByNumericOptions();
             }
@@ -137,26 +157,42 @@ namespace FacebookDeskAppUI
         private void setComboboxPostsSubFilterByComments()
         {
             labelPostsSubFilter.Text = "Filter by comments";
-            m_LoggedInUserData.FetchPostsByNumOfComments();
+            //m_LoggedInUserData.FetchPostsByNumOfComments();
             setComboboxPostsSubFilterByNumericOptions();
         }
 
         private void setComboboxPostsSubFilterByNumericOptions()
         {
             List<string> listOfNumOfOptions = new List<string>();
-            listOfNumOfOptions.Add("1-10");
-            listOfNumOfOptions.Add("11-20");
-            listOfNumOfOptions.Add("20-50");
-            listOfNumOfOptions.Add("51-100");
-            listOfNumOfOptions.Add("100-200");
-            listOfNumOfOptions.Add("Above 200");
+            listOfNumOfOptions.Add("0-9");
+            listOfNumOfOptions.Add("11-99");
+            listOfNumOfOptions.Add("100 And Above");
             setComboboxPostsSubFilter(listOfNumOfOptions);
+        }
+
+        private int getNumericValueOfSubFilter(string optionStr)
+        {
+            int num  = -1;
+            if(optionStr.Equals("0-9"))
+            {
+                num = 0;
+            }
+            else if(optionStr.Equals("11-99"))
+            {
+                num = 11;
+            }
+            else if(optionStr.Equals("100 And Above"))
+            {
+                num = 100;
+            }
+            return num;
         }
 
         private void comboBoxPostsSubFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             string optionOfFilter = comboBoxPostsFilter.Text;
             string optionOfSubFilter = comboBoxPostsSubFilter.Text;
+            int optionOfSubFilterNum = getNumericValueOfSubFilter(optionOfSubFilter);
             listBoxPosts.Items.Clear();
 
             if(optionOfFilter == k_PlacesTitle)
@@ -165,11 +201,12 @@ namespace FacebookDeskAppUI
             }
             else if(optionOfFilter == k_LikesTitle)
             {
-                setListBoxPostsByLikes(optionOfSubFilter);
+                
+                setListBoxPosts(PostsCollection.IteratorType.LIKES, optionOfSubFilterNum);
             }
             else if(optionOfFilter == k_CommentsTitle)
             {
-                setListBoxPostsByComments(optionOfSubFilter);
+                setListBoxPosts(PostsCollection.IteratorType.COMMENTS, optionOfSubFilterNum);
             }
         }
 
@@ -236,7 +273,7 @@ namespace FacebookDeskAppUI
                     listBoxPhotos.Items.Clear();
                     string albumName = (listBoxAlbums.SelectedItem as Album).Name;
                     List<Photo> photos = m_LoggedInUserData.FetchPhotosByAlbumName(albumName);
-                    setListBox(photos, listBoxPhotos);
+                    setListBox(photos.GetEnumerator(), listBoxPhotos);
                 }
                 catch(Exception)
                 {
@@ -349,7 +386,7 @@ namespace FacebookDeskAppUI
                 listBoxPhotos.DisplayMember = "Id";
                 m_LoggedInUserData.FetchAlbums();
                 ICollection<Album> albums = m_LoggedInUserData.GetAllAlbums();
-                setListBox(albums, listBoxAlbums);
+                setListBox(albums.GetEnumerator(), listBoxAlbums);
             }
             catch(Exception)
             {
@@ -364,7 +401,7 @@ namespace FacebookDeskAppUI
                 listBoxFriends.DisplayMember = "Name";
                 m_LoggedInUserData.FetchFriends();
                 ICollection<User> friends = m_LoggedInUserData.GetAllFriends();
-                setListBox(friends, listBoxFriends);
+                setListBox(friends.GetEnumerator(), listBoxFriends);
             }
             catch(Exception)
             {
@@ -379,7 +416,7 @@ namespace FacebookDeskAppUI
                 listBoxGroups.DisplayMember = "Name";
                 m_LoggedInUserData.FetchGroups();
                 ICollection<Group> groups = m_LoggedInUserData.GetAllGroups();
-                setListBox(groups, listBoxGroups);
+                setListBox(groups.GetEnumerator(), listBoxGroups);
             }
             catch(Exception)
             {

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FacebookDeskAppLogic
 {
-    internal interface IStrategy
+    public interface IStrategy
     {
         bool TestNumber(int i_Num);
     }
