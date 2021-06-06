@@ -85,18 +85,6 @@ namespace FacebookDeskAppLogic
             return m_ListOfGroups;
         }
 
-        public ICollection<Post> GetAllPosts()
-        {
-            if (User.Posts.Count != 0)
-            {
-                return User.Posts;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
         public IStrategy CreateStrategyByCategory(int i_NumCategory)
         {
             IStrategy strategy;
