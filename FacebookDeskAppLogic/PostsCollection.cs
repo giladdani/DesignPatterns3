@@ -11,7 +11,7 @@ namespace FacebookDeskAppLogic
     public class PostsCollection : IEnumerable<Post>
     {
         // Private Members
-        private List<Post> m_Posts;
+        private FacebookObjectCollection<Post> m_Posts;
         IteratorType m_IteratorType;
 
         public enum IteratorType
@@ -22,13 +22,9 @@ namespace FacebookDeskAppLogic
         }
 
         // Constructor
-        public PostsCollection(FacebookObjectCollection<Post> i_Posts)
+        public PostsCollection(User i_User)
         {
-            m_Posts = new List<Post>();
-            foreach (Post post in i_Posts)
-            {
-                m_Posts.Add(post);
-            }
+            m_Posts = i_User.Posts;
         }
 
         // Public Methods
