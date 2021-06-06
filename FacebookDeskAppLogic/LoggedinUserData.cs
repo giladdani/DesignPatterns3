@@ -10,14 +10,11 @@ namespace FacebookDeskAppLogic
         // Private Members
         private User m_User;
         private LoginResult m_LoginResult;
+        private PostsCollection m_PostsCollection = null;
         private IDictionary<string, List<Post>> m_DictionaryOfPostsByPlaces = new Dictionary<string, List<Post>>();
-        //private IDictionary<string, List<Post>> m_DictionaryOfPostsByLikes = new Dictionary<string, List<Post>>();
-        //private IDictionary<string, List<Post>> m_DictionaryOfPostsByComments = new Dictionary<string, List<Post>>();
         private ICollection<Album> m_ListOfAlbums = new List<Album>();
         private ICollection<User> m_ListOfFriends = new List<User>();
         private ICollection<Group> m_ListOfGroups = new List<Group>();
-
-        private PostsCollection m_PostsCollection = null;
 
         // Constructors
         private LoggedinUserData()
@@ -87,53 +84,6 @@ namespace FacebookDeskAppLogic
             addElementToDictionaryByKey(i_PlaceName, m_DictionaryOfPostsByPlaces, i_Post);
         }
 
-        /* private void addPostToDictionaryByLikes(Post i_Post)
-         {
-             try
-             {
-                 int numOfLikes = i_Post.LikedBy.Count;
-                 addPostToDictionaryByNumericValue(numOfLikes, m_DictionaryOfPostsByLikes, i_Post);
-             }
-             catch (Exception ex)
-             {
-                 throw ex;
-             }
-         }
-
-         private void addPostToDictionaryByComments(Post i_Post)
-         {
-             int numOfComments = i_Post.Comments.Count;
-             addPostToDictionaryByNumericValue(numOfComments, m_DictionaryOfPostsByComments, i_Post);
-         }
-
-         private void addPostToDictionaryByNumericValue(int i_NumericValue, IDictionary<string, List<Post>> i_DictionaryOfPosts, Post i_Post)
-         {
-             if (i_NumericValue >= 1 && i_NumericValue <= 10)
-             {
-                 addElementToDictionaryByKey("1-10", i_DictionaryOfPosts, i_Post);
-             }
-             else if (i_NumericValue >= 11 && i_NumericValue <= 20)
-             {
-                 addElementToDictionaryByKey("11-20", i_DictionaryOfPosts, i_Post);
-             }
-             else if (i_NumericValue >= 21 && i_NumericValue <= 50)
-             {
-                 addElementToDictionaryByKey("21-50", i_DictionaryOfPosts, i_Post);
-             }
-             else if (i_NumericValue >= 51 && i_NumericValue <= 100)
-             {
-                 addElementToDictionaryByKey("51-100", i_DictionaryOfPosts, i_Post);
-             }
-             else if (i_NumericValue >= 101 && i_NumericValue <= 200)
-             {
-                 addElementToDictionaryByKey("101-200", i_DictionaryOfPosts, i_Post);
-             }
-             else if (i_NumericValue > 200)
-             {
-                 addElementToDictionaryByKey("Above 200", i_DictionaryOfPosts, i_Post);
-             }
-         }*/
-
         //----------------------------------------------------------------------//
         //----------------------------------------------------------------------//
         //---------------------------Fetch methods------------------------------//
@@ -143,18 +93,6 @@ namespace FacebookDeskAppLogic
         {
             PostsCollection = new PostsCollection(m_User.Posts);
         }
-
-        /* public List<Post> FetchAllPosts()
-         {
-             FacebookObjectCollection<Post> posts = m_User.Posts;
-             List<Post> listOfPosts = new List<Post>();
-             foreach (Post post in posts)
-             {
-                 listOfPosts.Add(post);
-             }
-
-             return listOfPosts;
-         }*/
 
         public void FetchPostsByPlaces()
         {
@@ -170,29 +108,6 @@ namespace FacebookDeskAppLogic
                 }
             }
         }
-
-        /*  public void FetchPostsByNumOfLikes()
-          {
-              m_PostsLikesAboveTwoDigitsCollection = new PostsCollection(m_User.Posts,PostsCollection.IteratorType.LIKES);
-              m_PostsLikesOneDigitCollection;
-              m_PostsLikesTwoDigitsCollection;
-              FacebookObjectCollection<Post> posts = m_User.Posts;
-              m_DictionaryOfPostsByLikes.Clear();
-              foreach (Post post in posts)
-              {
-                  addPostToDictionaryByLikes(post);
-              }
-          }*/
-
-        /*public void FetchPostsByNumOfComments()
-        {
-            FacebookObjectCollection<Post> posts = m_User.Posts;
-            m_DictionaryOfPostsByComments.Clear();
-            foreach (Post post in posts)
-            {
-                addPostToDictionaryByComments(post);
-            }
-        }*/
 
         public void FetchFriends()
         {
@@ -295,30 +210,6 @@ namespace FacebookDeskAppLogic
             return m_DictionaryOfPostsByPlaces[i_PlaceName];
         }
 
-        /*public ICollection<Post> GetPostsByNumOfLikes(string i_NumOfLikes)
-        {
-            if (m_DictionaryOfPostsByLikes.ContainsKey(i_NumOfLikes))
-            {
-                return m_DictionaryOfPostsByLikes[i_NumOfLikes];
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public ICollection<Post> GetPostsByNumOfComments(string i_NumOfComments)
-        {
-            if (m_DictionaryOfPostsByComments.ContainsKey(i_NumOfComments))
-            {
-                return m_DictionaryOfPostsByComments[i_NumOfComments];
-            }
-            else
-            {
-                return null;
-            }
-        }*/
-
         //----------------------------------------------------------------------//
         //----------------------------------------------------------------------//
         //--------------------Feature bestTimeForStatus methods-----------------//
@@ -377,6 +268,7 @@ namespace FacebookDeskAppLogic
                 strategy = new AboveTwoDigitsStrategy();
 
             }
+
             return strategy;
         }
     }

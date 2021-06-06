@@ -17,7 +17,7 @@ namespace FacebookDeskAppUI
         private static readonly object Sr_lock = new object();
         private LoggedinUserData m_LoggedInUserData;
 
-        // Ctor
+        // Constructor
         public MainForm()
         {
             InitializeComponent();
@@ -28,26 +28,15 @@ namespace FacebookDeskAppUI
         //------------------------  General Methods  ---------------------------//
         //----------------------------------------------------------------------//
         //----------------------------------------------------------------------//
-        /*private void setListBox<T>(ICollection<T> i_List, ListBox i_ListBox)
-        {
-            lock(Sr_lock)
-            {
-                i_ListBox.Items.Clear();
-                foreach(T elem in i_List)
-                {
-                    i_ListBox.Items.Add(elem);
-                }
-            }
-        }*/
 
-        private void setListBox<T>(IEnumerator<T> i_PostsIterator, ListBox i_ListBox)
+        private void setListBox<T>(IEnumerator<T> i_Iterator, ListBox i_ListBox)
         {
             lock (Sr_lock)
             {
                 i_ListBox.Items.Clear();
-                while(i_PostsIterator.MoveNext())
+                while(i_Iterator.MoveNext())
                 {
-                    i_ListBox.Items.Add(i_PostsIterator.Current);
+                    i_ListBox.Items.Add(i_Iterator.Current);
                 }
             }
         }
@@ -57,6 +46,7 @@ namespace FacebookDeskAppUI
         //------------------- Setting ListBox of posts Methods------------------//
         //----------------------------------------------------------------------//
         //----------------------------------------------------------------------//
+
         private void setPostsListByPlaces(string i_PlaceName)
         {
             ICollection<Post> listOfPosts = m_LoggedInUserData.GetPostsByPlaceName(i_PlaceName);
@@ -67,43 +57,26 @@ namespace FacebookDeskAppUI
             }
         }
 
-       /* private void setListBoxPostsByComments(int i_NumOfComments)
+        private void setListBoxPostsOfCommentsOrLikes(PostsCollection.IteratorType i_IteratorType, int i_Num)
         {
-            
-            IStrategy strategy = m_LoggedInUserData.CreateStrategyByCategory(i_NumOfComments);
-            // ICollection<Post> listOfPosts = m_LoggedInUserData.GetPostsByNumOfComments(i_NumOfComments);
-            m_LoggedInUserData.PostsCollection.GetEnumerator(PostsCollection.IteratorType.COMMENTS, strategy);
-            if(listOfPosts != null)
-            {
-                ICollection<PostWrapper> listOfPostsWrapper = generateListOfPostsWrappers(listOfPosts);
-                setListBox(listOfPostsWrapper.GetEnumerator(), listBoxPosts);
-            }
-        }*/
-
-        private void setListBoxPosts(PostsCollection.IteratorType i_IteratorType, int i_Num)
-        {
-
             IStrategy strategy = m_LoggedInUserData.CreateStrategyByCategory(i_Num);
-            // ICollection<Post> listOfPosts = m_LoggedInUserData.GetPostsByNumOfComments(i_NumOfComments);
             IEnumerator<Post> postsIterator = m_LoggedInUserData.PostsCollection.GetEnumerator(i_IteratorType, strategy);
-            setListBox(postsIterator, listBoxPosts);
-        }
-
-       /* private void setListBoxPostsByLikes(int i_NumOfLikes)
-        {
-            ICollection<Post> listOfPosts = m_LoggedInUserData.GetPostsByNumOfLikes(i_NumOfLikes);
-            if(listOfPosts != null)
+            listBoxPosts.Items.Clear();
+            while (postsIterator.MoveNext())
             {
-                ICollection<PostWrapper> listOfPostsWrapper = generateListOfPostsWrappers(listOfPosts);
-                setListBox(listOfPostsWrapper, listBoxPosts);
+                listBoxPosts.Items.Add(new PostWrapper(postsIterator.Current));
             }
-        }*/
+        }
 
         private void setListBoxPostsByListOfAll()
         {
             listBoxPosts.Items.Clear();
             IEnumerator<Post> postsIterator = m_LoggedInUserData.PostsCollection.GetEnumerator();
-            setListBox(postsIterator, listBoxPosts);
+            listBoxPosts.Items.Clear();
+            while (postsIterator.MoveNext())
+            {
+                listBoxPosts.Items.Add(new PostWrapper(postsIterator.Current));
+            }
         }
 
         private void listBoxPosts_SelectedIndexChanged(object sender, EventArgs e)
@@ -144,7 +117,6 @@ namespace FacebookDeskAppUI
         {
             try
             {
-              //  m_LoggedInUserData.FetchPostsByNumOfLikes();
                 labelPostsSubFilter.Text = "Filter by likes";
                 setComboboxPostsSubFilterByNumericOptions();
             }
@@ -157,7 +129,6 @@ namespace FacebookDeskAppUI
         private void setComboboxPostsSubFilterByComments()
         {
             labelPostsSubFilter.Text = "Filter by comments";
-            //m_LoggedInUserData.FetchPostsByNumOfComments();
             setComboboxPostsSubFilterByNumericOptions();
         }
 
@@ -202,11 +173,11 @@ namespace FacebookDeskAppUI
             else if(optionOfFilter == k_LikesTitle)
             {
                 
-                setListBoxPosts(PostsCollection.IteratorType.LIKES, optionOfSubFilterNum);
+                setListBoxPostsOfCommentsOrLikes(PostsCollection.IteratorType.LIKES, optionOfSubFilterNum);
             }
             else if(optionOfFilter == k_CommentsTitle)
             {
-                setListBoxPosts(PostsCollection.IteratorType.COMMENTS, optionOfSubFilterNum);
+                setListBoxPostsOfCommentsOrLikes(PostsCollection.IteratorType.COMMENTS, optionOfSubFilterNum);
             }
         }
 
