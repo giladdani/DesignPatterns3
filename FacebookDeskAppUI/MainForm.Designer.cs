@@ -77,7 +77,6 @@ namespace FacebookDeskAppUI
             this.labelCreatePost = new System.Windows.Forms.Label();
             this.comboBoxPostsFilter = new System.Windows.Forms.ComboBox();
             this.labelPostsFilter = new System.Windows.Forms.Label();
-            this.labelPostsSubFilter = new System.Windows.Forms.Label();
             this.listBoxPosts = new System.Windows.Forms.ListBox();
             this.comboBoxPostsSubFilter = new System.Windows.Forms.ComboBox();
             this.panelPost = new System.Windows.Forms.Panel();
@@ -97,6 +96,7 @@ namespace FacebookDeskAppUI
             this.pictureBoxAboutPhoto = new System.Windows.Forms.PictureBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
+            this.labelPostsSubFilter = new System.Windows.Forms.Label();
             labelFriendBirthday = new System.Windows.Forms.Label();
             labelFriendEmail = new System.Windows.Forms.Label();
             labelFriendMiddleName = new System.Windows.Forms.Label();
@@ -129,88 +129,81 @@ namespace FacebookDeskAppUI
             // labelFriendBirthday
             // 
             labelFriendBirthday.AutoSize = true;
-            labelFriendBirthday.Location = new System.Drawing.Point(14, 41);
-            labelFriendBirthday.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            labelFriendBirthday.Location = new System.Drawing.Point(19, 50);
             labelFriendBirthday.Name = "labelFriendBirthday";
-            labelFriendBirthday.Size = new System.Drawing.Size(48, 13);
+            labelFriendBirthday.Size = new System.Drawing.Size(64, 17);
             labelFriendBirthday.TabIndex = 7;
             labelFriendBirthday.Text = "Birthday:";
             // 
             // labelFriendEmail
             // 
             labelFriendEmail.AutoSize = true;
-            labelFriendEmail.Location = new System.Drawing.Point(14, 60);
-            labelFriendEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            labelFriendEmail.Location = new System.Drawing.Point(19, 74);
             labelFriendEmail.Name = "labelFriendEmail";
-            labelFriendEmail.Size = new System.Drawing.Size(35, 13);
+            labelFriendEmail.Size = new System.Drawing.Size(46, 17);
             labelFriendEmail.TabIndex = 9;
             labelFriendEmail.Text = "Email:";
             // 
             // labelFriendMiddleName
             // 
             labelFriendMiddleName.AutoSize = true;
-            labelFriendMiddleName.Location = new System.Drawing.Point(14, 79);
-            labelFriendMiddleName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            labelFriendMiddleName.Location = new System.Drawing.Point(19, 97);
             labelFriendMiddleName.Name = "labelFriendMiddleName";
-            labelFriendMiddleName.Size = new System.Drawing.Size(72, 13);
+            labelFriendMiddleName.Size = new System.Drawing.Size(94, 17);
             labelFriendMiddleName.TabIndex = 11;
             labelFriendMiddleName.Text = "Middle Name:";
             // 
             // labelFriendName
             // 
             labelFriendName.AutoSize = true;
-            labelFriendName.Location = new System.Drawing.Point(14, 98);
-            labelFriendName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            labelFriendName.Location = new System.Drawing.Point(19, 121);
             labelFriendName.Name = "labelFriendName";
-            labelFriendName.Size = new System.Drawing.Size(38, 13);
+            labelFriendName.Size = new System.Drawing.Size(49, 17);
             labelFriendName.TabIndex = 13;
             labelFriendName.Text = "Name:";
             // 
             // LabelFriendReligion
             // 
             LabelFriendReligion.AutoSize = true;
-            LabelFriendReligion.Location = new System.Drawing.Point(14, 116);
-            LabelFriendReligion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            LabelFriendReligion.Location = new System.Drawing.Point(19, 143);
             LabelFriendReligion.Name = "LabelFriendReligion";
-            LabelFriendReligion.Size = new System.Drawing.Size(48, 13);
+            LabelFriendReligion.Size = new System.Drawing.Size(63, 17);
             LabelFriendReligion.TabIndex = 15;
             LabelFriendReligion.Text = "Religion:";
             // 
             // labelFriendUsername
             // 
             labelFriendUsername.AutoSize = true;
-            labelFriendUsername.Location = new System.Drawing.Point(14, 135);
-            labelFriendUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            labelFriendUsername.Location = new System.Drawing.Point(19, 166);
             labelFriendUsername.Name = "labelFriendUsername";
-            labelFriendUsername.Size = new System.Drawing.Size(63, 13);
+            labelFriendUsername.Size = new System.Drawing.Size(83, 17);
             labelFriendUsername.TabIndex = 17;
             labelFriendUsername.Text = "User Name:";
             // 
             // labelGroupDescription
             // 
             labelGroupDescription.AutoSize = true;
-            labelGroupDescription.Location = new System.Drawing.Point(299, 89);
-            labelGroupDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            labelGroupDescription.Location = new System.Drawing.Point(399, 110);
             labelGroupDescription.Name = "labelGroupDescription";
-            labelGroupDescription.Size = new System.Drawing.Size(63, 13);
+            labelGroupDescription.Size = new System.Drawing.Size(83, 17);
             labelGroupDescription.TabIndex = 6;
             labelGroupDescription.Text = "Description:";
             // 
             // labelGroupName
             // 
             labelGroupName.AutoSize = true;
-            labelGroupName.Location = new System.Drawing.Point(299, 107);
-            labelGroupName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            labelGroupName.Location = new System.Drawing.Point(399, 132);
             labelGroupName.Name = "labelGroupName";
-            labelGroupName.Size = new System.Drawing.Size(38, 13);
+            labelGroupName.Size = new System.Drawing.Size(49, 17);
             labelGroupName.TabIndex = 8;
             labelGroupName.Text = "Name:";
             // 
             // pictureBoxProfilePhoto
             // 
-            this.pictureBoxProfilePhoto.Location = new System.Drawing.Point(604, 110);
+            this.pictureBoxProfilePhoto.Location = new System.Drawing.Point(805, 135);
+            this.pictureBoxProfilePhoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxProfilePhoto.Name = "pictureBoxProfilePhoto";
-            this.pictureBoxProfilePhoto.Size = new System.Drawing.Size(178, 214);
+            this.pictureBoxProfilePhoto.Size = new System.Drawing.Size(237, 263);
             this.pictureBoxProfilePhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxProfilePhoto.TabIndex = 3;
             this.pictureBoxProfilePhoto.TabStop = false;
@@ -218,9 +211,10 @@ namespace FacebookDeskAppUI
             // labelProfileName
             // 
             this.labelProfileName.AutoSize = true;
-            this.labelProfileName.Location = new System.Drawing.Point(635, 47);
+            this.labelProfileName.Location = new System.Drawing.Point(847, 58);
+            this.labelProfileName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelProfileName.Name = "labelProfileName";
-            this.labelProfileName.Size = new System.Drawing.Size(0, 13);
+            this.labelProfileName.Size = new System.Drawing.Size(0, 17);
             this.labelProfileName.TabIndex = 4;
             // 
             // tabGroups
@@ -232,38 +226,37 @@ namespace FacebookDeskAppUI
             this.tabGroups.Controls.Add(this.labelGroupNameVal);
             this.tabGroups.Controls.Add(this.listBoxGroups);
             this.tabGroups.Controls.Add(this.labelListOfGroups);
-            this.tabGroups.Location = new System.Drawing.Point(4, 22);
-            this.tabGroups.Margin = new System.Windows.Forms.Padding(2);
+            this.tabGroups.Location = new System.Drawing.Point(4, 25);
+            this.tabGroups.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabGroups.Name = "tabGroups";
-            this.tabGroups.Size = new System.Drawing.Size(552, 405);
+            this.tabGroups.Size = new System.Drawing.Size(739, 501);
             this.tabGroups.TabIndex = 5;
             this.tabGroups.Text = "Groups";
             this.tabGroups.UseVisualStyleBackColor = true;
             // 
             // labelGroupDescriptionVal
             // 
-            this.labelGroupDescriptionVal.Location = new System.Drawing.Point(366, 89);
-            this.labelGroupDescriptionVal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelGroupDescriptionVal.Location = new System.Drawing.Point(488, 110);
             this.labelGroupDescriptionVal.Name = "labelGroupDescriptionVal";
-            this.labelGroupDescriptionVal.Size = new System.Drawing.Size(75, 19);
+            this.labelGroupDescriptionVal.Size = new System.Drawing.Size(100, 23);
             this.labelGroupDescriptionVal.TabIndex = 7;
             // 
             // labelGroupNameVal
             // 
-            this.labelGroupNameVal.Location = new System.Drawing.Point(366, 107);
-            this.labelGroupNameVal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelGroupNameVal.Location = new System.Drawing.Point(488, 132);
             this.labelGroupNameVal.Name = "labelGroupNameVal";
-            this.labelGroupNameVal.Size = new System.Drawing.Size(75, 19);
+            this.labelGroupNameVal.Size = new System.Drawing.Size(100, 23);
             this.labelGroupNameVal.TabIndex = 9;
             // 
             // listBoxGroups
             // 
             this.listBoxGroups.DisplayMember = "Name";
             this.listBoxGroups.FormattingEnabled = true;
-            this.listBoxGroups.Location = new System.Drawing.Point(16, 41);
-            this.listBoxGroups.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxGroups.ItemHeight = 16;
+            this.listBoxGroups.Location = new System.Drawing.Point(21, 50);
+            this.listBoxGroups.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxGroups.Name = "listBoxGroups";
-            this.listBoxGroups.Size = new System.Drawing.Size(226, 173);
+            this.listBoxGroups.Size = new System.Drawing.Size(300, 212);
             this.listBoxGroups.TabIndex = 6;
             this.listBoxGroups.ValueMember = "Description";
             this.listBoxGroups.SelectedIndexChanged += new System.EventHandler(this.listBoxGroups_SelectedIndexChanged);
@@ -271,9 +264,10 @@ namespace FacebookDeskAppUI
             // labelListOfGroups
             // 
             this.labelListOfGroups.AutoSize = true;
-            this.labelListOfGroups.Location = new System.Drawing.Point(26, 18);
+            this.labelListOfGroups.Location = new System.Drawing.Point(35, 22);
+            this.labelListOfGroups.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelListOfGroups.Name = "labelListOfGroups";
-            this.labelListOfGroups.Size = new System.Drawing.Size(75, 13);
+            this.labelListOfGroups.Size = new System.Drawing.Size(101, 17);
             this.labelListOfGroups.TabIndex = 6;
             this.labelListOfGroups.Text = "List of Groups:";
             // 
@@ -287,11 +281,11 @@ namespace FacebookDeskAppUI
             this.tabFriends.Controls.Add(this.listBoxFriends);
             this.tabFriends.Controls.Add(this.labelListOfFriends);
             this.tabFriends.Controls.Add(this.panelFriendDetails);
-            this.tabFriends.Location = new System.Drawing.Point(4, 22);
-            this.tabFriends.Margin = new System.Windows.Forms.Padding(2);
+            this.tabFriends.Location = new System.Drawing.Point(4, 25);
+            this.tabFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabFriends.Name = "tabFriends";
-            this.tabFriends.Padding = new System.Windows.Forms.Padding(2);
-            this.tabFriends.Size = new System.Drawing.Size(552, 405);
+            this.tabFriends.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabFriends.Size = new System.Drawing.Size(739, 501);
             this.tabFriends.TabIndex = 2;
             this.tabFriends.Text = "Friends";
             this.tabFriends.UseVisualStyleBackColor = true;
@@ -300,10 +294,11 @@ namespace FacebookDeskAppUI
             // 
             this.listBoxFriends.DisplayMember = "About";
             this.listBoxFriends.FormattingEnabled = true;
-            this.listBoxFriends.Location = new System.Drawing.Point(26, 41);
-            this.listBoxFriends.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxFriends.ItemHeight = 16;
+            this.listBoxFriends.Location = new System.Drawing.Point(35, 50);
+            this.listBoxFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxFriends.Name = "listBoxFriends";
-            this.listBoxFriends.Size = new System.Drawing.Size(226, 342);
+            this.listBoxFriends.Size = new System.Drawing.Size(300, 420);
             this.listBoxFriends.TabIndex = 7;
             this.listBoxFriends.ValueMember = "About";
             this.listBoxFriends.SelectedIndexChanged += new System.EventHandler(this.listBoxFriends_SelectedIndexChanged);
@@ -311,9 +306,10 @@ namespace FacebookDeskAppUI
             // labelListOfFriends
             // 
             this.labelListOfFriends.AutoSize = true;
-            this.labelListOfFriends.Location = new System.Drawing.Point(23, 17);
+            this.labelListOfFriends.Location = new System.Drawing.Point(31, 21);
+            this.labelListOfFriends.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelListOfFriends.Name = "labelListOfFriends";
-            this.labelListOfFriends.Size = new System.Drawing.Size(72, 13);
+            this.labelListOfFriends.Size = new System.Drawing.Size(97, 17);
             this.labelListOfFriends.TabIndex = 7;
             this.labelListOfFriends.Text = "List of friends:";
             // 
@@ -331,18 +327,18 @@ namespace FacebookDeskAppUI
             this.panelFriendDetails.Controls.Add(labelFriendMiddleName);
             this.panelFriendDetails.Controls.Add(labelFriendName);
             this.panelFriendDetails.Controls.Add(this.labelFriendMiddleNameVal);
-            this.panelFriendDetails.Location = new System.Drawing.Point(318, 131);
+            this.panelFriendDetails.Location = new System.Drawing.Point(424, 161);
+            this.panelFriendDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelFriendDetails.Name = "panelFriendDetails";
-            this.panelFriendDetails.Size = new System.Drawing.Size(172, 201);
+            this.panelFriendDetails.Size = new System.Drawing.Size(229, 247);
             this.panelFriendDetails.TabIndex = 2;
             // 
             // labelFriendBirthdayVal
             // 
             this.labelFriendBirthdayVal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.friendsDetailsBindingSource, "Birthday", true));
-            this.labelFriendBirthdayVal.Location = new System.Drawing.Point(89, 41);
-            this.labelFriendBirthdayVal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelFriendBirthdayVal.Location = new System.Drawing.Point(119, 50);
             this.labelFriendBirthdayVal.Name = "labelFriendBirthdayVal";
-            this.labelFriendBirthdayVal.Size = new System.Drawing.Size(75, 19);
+            this.labelFriendBirthdayVal.Size = new System.Drawing.Size(100, 23);
             this.labelFriendBirthdayVal.TabIndex = 8;
             // 
             // friendsDetailsBindingSource
@@ -352,46 +348,41 @@ namespace FacebookDeskAppUI
             // labelFriendUsernameVal
             // 
             this.labelFriendUsernameVal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.friendsDetailsBindingSource, "UserName", true));
-            this.labelFriendUsernameVal.Location = new System.Drawing.Point(89, 135);
-            this.labelFriendUsernameVal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelFriendUsernameVal.Location = new System.Drawing.Point(119, 166);
             this.labelFriendUsernameVal.Name = "labelFriendUsernameVal";
-            this.labelFriendUsernameVal.Size = new System.Drawing.Size(75, 19);
+            this.labelFriendUsernameVal.Size = new System.Drawing.Size(100, 23);
             this.labelFriendUsernameVal.TabIndex = 18;
             // 
             // labelFriendReligionVal
             // 
             this.labelFriendReligionVal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.friendsDetailsBindingSource, "Religion", true));
-            this.labelFriendReligionVal.Location = new System.Drawing.Point(89, 116);
-            this.labelFriendReligionVal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelFriendReligionVal.Location = new System.Drawing.Point(119, 143);
             this.labelFriendReligionVal.Name = "labelFriendReligionVal";
-            this.labelFriendReligionVal.Size = new System.Drawing.Size(75, 19);
+            this.labelFriendReligionVal.Size = new System.Drawing.Size(100, 23);
             this.labelFriendReligionVal.TabIndex = 16;
             // 
             // labelFriendEmailVal
             // 
             this.labelFriendEmailVal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.friendsDetailsBindingSource, "Email", true));
-            this.labelFriendEmailVal.Location = new System.Drawing.Point(89, 60);
-            this.labelFriendEmailVal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelFriendEmailVal.Location = new System.Drawing.Point(119, 74);
             this.labelFriendEmailVal.Name = "labelFriendEmailVal";
-            this.labelFriendEmailVal.Size = new System.Drawing.Size(75, 19);
+            this.labelFriendEmailVal.Size = new System.Drawing.Size(100, 23);
             this.labelFriendEmailVal.TabIndex = 10;
             // 
             // labelFriendNameVal
             // 
             this.labelFriendNameVal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.friendsDetailsBindingSource, "Name", true));
-            this.labelFriendNameVal.Location = new System.Drawing.Point(89, 98);
-            this.labelFriendNameVal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelFriendNameVal.Location = new System.Drawing.Point(119, 121);
             this.labelFriendNameVal.Name = "labelFriendNameVal";
-            this.labelFriendNameVal.Size = new System.Drawing.Size(75, 19);
+            this.labelFriendNameVal.Size = new System.Drawing.Size(100, 23);
             this.labelFriendNameVal.TabIndex = 14;
             // 
             // labelFriendMiddleNameVal
             // 
             this.labelFriendMiddleNameVal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.friendsDetailsBindingSource, "MiddleName", true));
-            this.labelFriendMiddleNameVal.Location = new System.Drawing.Point(89, 79);
-            this.labelFriendMiddleNameVal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelFriendMiddleNameVal.Location = new System.Drawing.Point(119, 97);
             this.labelFriendMiddleNameVal.Name = "labelFriendMiddleNameVal";
-            this.labelFriendMiddleNameVal.Size = new System.Drawing.Size(75, 19);
+            this.labelFriendMiddleNameVal.Size = new System.Drawing.Size(100, 23);
             this.labelFriendMiddleNameVal.TabIndex = 12;
             // 
             // tabPhotos
@@ -402,11 +393,11 @@ namespace FacebookDeskAppUI
             this.tabPhotos.Controls.Add(this.listBoxAlbums);
             this.tabPhotos.Controls.Add(this.label3);
             this.tabPhotos.Controls.Add(this.label2);
-            this.tabPhotos.Location = new System.Drawing.Point(4, 22);
-            this.tabPhotos.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPhotos.Location = new System.Drawing.Point(4, 25);
+            this.tabPhotos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPhotos.Name = "tabPhotos";
-            this.tabPhotos.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPhotos.Size = new System.Drawing.Size(552, 405);
+            this.tabPhotos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPhotos.Size = new System.Drawing.Size(739, 501);
             this.tabPhotos.TabIndex = 1;
             this.tabPhotos.Text = "Photos";
             this.tabPhotos.UseVisualStyleBackColor = true;
@@ -415,10 +406,10 @@ namespace FacebookDeskAppUI
             // 
             this.pictureNormalURLPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.photoBindingSource, "PictureNormalURL", true));
             this.pictureNormalURLPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("ImageLocation", this.photoBindingSource, "PictureNormalURL", true));
-            this.pictureNormalURLPictureBox.Location = new System.Drawing.Point(176, 56);
-            this.pictureNormalURLPictureBox.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureNormalURLPictureBox.Location = new System.Drawing.Point(235, 69);
+            this.pictureNormalURLPictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureNormalURLPictureBox.Name = "pictureNormalURLPictureBox";
-            this.pictureNormalURLPictureBox.Size = new System.Drawing.Size(250, 263);
+            this.pictureNormalURLPictureBox.Size = new System.Drawing.Size(333, 324);
             this.pictureNormalURLPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureNormalURLPictureBox.TabIndex = 8;
             this.pictureNormalURLPictureBox.TabStop = false;
@@ -431,10 +422,11 @@ namespace FacebookDeskAppUI
             // 
             this.listBoxPhotos.DisplayMember = "Album";
             this.listBoxPhotos.FormattingEnabled = true;
-            this.listBoxPhotos.Location = new System.Drawing.Point(27, 199);
-            this.listBoxPhotos.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxPhotos.ItemHeight = 16;
+            this.listBoxPhotos.Location = new System.Drawing.Point(36, 245);
+            this.listBoxPhotos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxPhotos.Name = "listBoxPhotos";
-            this.listBoxPhotos.Size = new System.Drawing.Size(81, 121);
+            this.listBoxPhotos.Size = new System.Drawing.Size(107, 148);
             this.listBoxPhotos.TabIndex = 7;
             this.listBoxPhotos.ValueMember = "Album";
             this.listBoxPhotos.SelectedIndexChanged += new System.EventHandler(this.listBoxPhotos_SelectedIndexChanged);
@@ -443,10 +435,11 @@ namespace FacebookDeskAppUI
             // 
             this.listBoxAlbums.DisplayMember = "Comments";
             this.listBoxAlbums.FormattingEnabled = true;
-            this.listBoxAlbums.Location = new System.Drawing.Point(25, 56);
-            this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxAlbums.ItemHeight = 16;
+            this.listBoxAlbums.Location = new System.Drawing.Point(33, 69);
+            this.listBoxAlbums.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxAlbums.Name = "listBoxAlbums";
-            this.listBoxAlbums.Size = new System.Drawing.Size(84, 108);
+            this.listBoxAlbums.Size = new System.Drawing.Size(111, 132);
             this.listBoxAlbums.TabIndex = 7;
             this.listBoxAlbums.ValueMember = "Comments";
             this.listBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.listBoxAlbums_SelectedIndexChanged);
@@ -454,20 +447,18 @@ namespace FacebookDeskAppUI
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 174);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(33, 214);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.Size = new System.Drawing.Size(101, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "Choose Photo:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 29);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(32, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 13);
+            this.label2.Size = new System.Drawing.Size(103, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Choose Album:";
             // 
@@ -484,11 +475,11 @@ namespace FacebookDeskAppUI
             this.tabPosts.Controls.Add(this.listBoxPosts);
             this.tabPosts.Controls.Add(this.comboBoxPostsSubFilter);
             this.tabPosts.Controls.Add(this.panelPost);
-            this.tabPosts.Location = new System.Drawing.Point(4, 22);
-            this.tabPosts.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPosts.Location = new System.Drawing.Point(4, 25);
+            this.tabPosts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPosts.Name = "tabPosts";
-            this.tabPosts.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPosts.Size = new System.Drawing.Size(552, 405);
+            this.tabPosts.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPosts.Size = new System.Drawing.Size(739, 501);
             this.tabPosts.TabIndex = 0;
             this.tabPosts.Text = "Posts";
             this.tabPosts.UseVisualStyleBackColor = true;
@@ -496,19 +487,18 @@ namespace FacebookDeskAppUI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 271);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(17, 334);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 13);
+            this.label1.Size = new System.Drawing.Size(128, 17);
             this.label1.TabIndex = 20;
             this.label1.Text = "Best Hour To Post:";
             // 
             // buttonBestHourToPostByComments
             // 
-            this.buttonBestHourToPostByComments.Location = new System.Drawing.Point(16, 243);
-            this.buttonBestHourToPostByComments.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonBestHourToPostByComments.Location = new System.Drawing.Point(21, 299);
+            this.buttonBestHourToPostByComments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonBestHourToPostByComments.Name = "buttonBestHourToPostByComments";
-            this.buttonBestHourToPostByComments.Size = new System.Drawing.Size(199, 21);
+            this.buttonBestHourToPostByComments.Size = new System.Drawing.Size(265, 26);
             this.buttonBestHourToPostByComments.TabIndex = 19;
             this.buttonBestHourToPostByComments.Text = "Get Best Hour To Post By Comments";
             this.buttonBestHourToPostByComments.UseVisualStyleBackColor = true;
@@ -517,18 +507,17 @@ namespace FacebookDeskAppUI
             // labelBestHourToPostVal
             // 
             this.labelBestHourToPostVal.AutoSize = true;
-            this.labelBestHourToPostVal.Location = new System.Drawing.Point(135, 271);
-            this.labelBestHourToPostVal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelBestHourToPostVal.Location = new System.Drawing.Point(180, 334);
             this.labelBestHourToPostVal.Name = "labelBestHourToPostVal";
-            this.labelBestHourToPostVal.Size = new System.Drawing.Size(0, 13);
+            this.labelBestHourToPostVal.Size = new System.Drawing.Size(0, 17);
             this.labelBestHourToPostVal.TabIndex = 18;
             // 
             // buttonBestHourToPostByLikes
             // 
-            this.buttonBestHourToPostByLikes.Location = new System.Drawing.Point(16, 218);
-            this.buttonBestHourToPostByLikes.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonBestHourToPostByLikes.Location = new System.Drawing.Point(21, 268);
+            this.buttonBestHourToPostByLikes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonBestHourToPostByLikes.Name = "buttonBestHourToPostByLikes";
-            this.buttonBestHourToPostByLikes.Size = new System.Drawing.Size(199, 21);
+            this.buttonBestHourToPostByLikes.Size = new System.Drawing.Size(265, 26);
             this.buttonBestHourToPostByLikes.TabIndex = 17;
             this.buttonBestHourToPostByLikes.Text = "Get Best Hour To Post By Likes";
             this.buttonBestHourToPostByLikes.UseVisualStyleBackColor = true;
@@ -539,24 +528,27 @@ namespace FacebookDeskAppUI
             this.panelCreatePost.Controls.Add(this.richTextBoxCreatePost);
             this.panelCreatePost.Controls.Add(this.buttonCreatePost);
             this.panelCreatePost.Controls.Add(this.labelCreatePost);
-            this.panelCreatePost.Location = new System.Drawing.Point(16, 293);
+            this.panelCreatePost.Location = new System.Drawing.Point(21, 361);
+            this.panelCreatePost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelCreatePost.Name = "panelCreatePost";
-            this.panelCreatePost.Size = new System.Drawing.Size(174, 106);
+            this.panelCreatePost.Size = new System.Drawing.Size(232, 130);
             this.panelCreatePost.TabIndex = 16;
             // 
             // richTextBoxCreatePost
             // 
-            this.richTextBoxCreatePost.Location = new System.Drawing.Point(17, 32);
+            this.richTextBoxCreatePost.Location = new System.Drawing.Point(23, 39);
+            this.richTextBoxCreatePost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBoxCreatePost.Name = "richTextBoxCreatePost";
-            this.richTextBoxCreatePost.Size = new System.Drawing.Size(146, 42);
+            this.richTextBoxCreatePost.Size = new System.Drawing.Size(193, 51);
             this.richTextBoxCreatePost.TabIndex = 16;
-            this.richTextBoxCreatePost.Text = "";
+            this.richTextBoxCreatePost.Text = string.Empty;
             // 
             // buttonCreatePost
             // 
-            this.buttonCreatePost.Location = new System.Drawing.Point(44, 80);
+            this.buttonCreatePost.Location = new System.Drawing.Point(59, 98);
+            this.buttonCreatePost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonCreatePost.Name = "buttonCreatePost";
-            this.buttonCreatePost.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreatePost.Size = new System.Drawing.Size(100, 28);
             this.buttonCreatePost.TabIndex = 15;
             this.buttonCreatePost.Text = "Post";
             this.buttonCreatePost.UseVisualStyleBackColor = true;
@@ -565,46 +557,42 @@ namespace FacebookDeskAppUI
             // labelCreatePost
             // 
             this.labelCreatePost.AutoSize = true;
-            this.labelCreatePost.Location = new System.Drawing.Point(46, 15);
+            this.labelCreatePost.Location = new System.Drawing.Point(61, 18);
+            this.labelCreatePost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCreatePost.Name = "labelCreatePost";
-            this.labelCreatePost.Size = new System.Drawing.Size(73, 13);
+            this.labelCreatePost.Size = new System.Drawing.Size(97, 17);
             this.labelCreatePost.TabIndex = 13;
             this.labelCreatePost.Text = "Create a post:";
             // 
             // comboBoxPostsFilter
             // 
             this.comboBoxPostsFilter.FormattingEnabled = true;
-            this.comboBoxPostsFilter.Location = new System.Drawing.Point(16, 45);
+            this.comboBoxPostsFilter.Location = new System.Drawing.Point(21, 55);
+            this.comboBoxPostsFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxPostsFilter.Name = "comboBoxPostsFilter";
-            this.comboBoxPostsFilter.Size = new System.Drawing.Size(139, 21);
+            this.comboBoxPostsFilter.Size = new System.Drawing.Size(184, 24);
             this.comboBoxPostsFilter.TabIndex = 12;
             this.comboBoxPostsFilter.SelectedIndexChanged += new System.EventHandler(this.comboBoxPostsFilter_SelectedIndexChanged);
             // 
             // labelPostsFilter
             // 
             this.labelPostsFilter.AutoSize = true;
-            this.labelPostsFilter.Location = new System.Drawing.Point(14, 21);
+            this.labelPostsFilter.Location = new System.Drawing.Point(19, 26);
+            this.labelPostsFilter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPostsFilter.Name = "labelPostsFilter";
-            this.labelPostsFilter.Size = new System.Drawing.Size(149, 13);
+            this.labelPostsFilter.Size = new System.Drawing.Size(200, 17);
             this.labelPostsFilter.TabIndex = 11;
             this.labelPostsFilter.Text = "Choose category to filter posts";
-            // 
-            // labelPostsSubFilter
-            // 
-            this.labelPostsSubFilter.AutoSize = true;
-            this.labelPostsSubFilter.Location = new System.Drawing.Point(14, 77);
-            this.labelPostsSubFilter.Name = "labelPostsSubFilter";
-            this.labelPostsSubFilter.Size = new System.Drawing.Size(105, 13);
-            this.labelPostsSubFilter.TabIndex = 5;
-            this.labelPostsSubFilter.Text = "Filter posts by places";
             // 
             // listBoxPosts
             // 
             this.listBoxPosts.DisplayMember = "Caption";
             this.listBoxPosts.FormattingEnabled = true;
-            this.listBoxPosts.Location = new System.Drawing.Point(16, 143);
+            this.listBoxPosts.ItemHeight = 16;
+            this.listBoxPosts.Location = new System.Drawing.Point(21, 176);
+            this.listBoxPosts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBoxPosts.Name = "listBoxPosts";
-            this.listBoxPosts.Size = new System.Drawing.Size(174, 56);
+            this.listBoxPosts.Size = new System.Drawing.Size(231, 68);
             this.listBoxPosts.TabIndex = 1;
             this.listBoxPosts.ValueMember = "Caption";
             this.listBoxPosts.SelectedIndexChanged += new System.EventHandler(this.listBoxPosts_SelectedIndexChanged);
@@ -612,9 +600,10 @@ namespace FacebookDeskAppUI
             // comboBoxPostsSubFilter
             // 
             this.comboBoxPostsSubFilter.FormattingEnabled = true;
-            this.comboBoxPostsSubFilter.Location = new System.Drawing.Point(16, 103);
+            this.comboBoxPostsSubFilter.Location = new System.Drawing.Point(21, 127);
+            this.comboBoxPostsSubFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxPostsSubFilter.Name = "comboBoxPostsSubFilter";
-            this.comboBoxPostsSubFilter.Size = new System.Drawing.Size(139, 21);
+            this.comboBoxPostsSubFilter.Size = new System.Drawing.Size(184, 24);
             this.comboBoxPostsSubFilter.TabIndex = 2;
             this.comboBoxPostsSubFilter.SelectedIndexChanged += new System.EventHandler(this.comboBoxPostsSubFilter_SelectedIndexChanged);
             // 
@@ -624,9 +613,10 @@ namespace FacebookDeskAppUI
             this.panelPost.Controls.Add(this.panelPostBody);
             this.panelPost.Controls.Add(this.labelPostName);
             this.panelPost.Controls.Add(this.pictureBoxPostPhoto);
-            this.panelPost.Location = new System.Drawing.Point(234, 21);
+            this.panelPost.Location = new System.Drawing.Point(312, 26);
+            this.panelPost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelPost.Name = "panelPost";
-            this.panelPost.Size = new System.Drawing.Size(290, 365);
+            this.panelPost.Size = new System.Drawing.Size(386, 449);
             this.panelPost.TabIndex = 10;
             // 
             // panelPostBody
@@ -634,18 +624,18 @@ namespace FacebookDeskAppUI
             this.panelPostBody.AutoScroll = true;
             this.panelPostBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelPostBody.Controls.Add(this.labelPostBody);
-            this.panelPostBody.Location = new System.Drawing.Point(17, 55);
+            this.panelPostBody.Location = new System.Drawing.Point(23, 68);
+            this.panelPostBody.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelPostBody.Name = "panelPostBody";
-            this.panelPostBody.Size = new System.Drawing.Size(238, 176);
+            this.panelPostBody.Size = new System.Drawing.Size(317, 216);
             this.panelPostBody.TabIndex = 8;
             // 
             // labelPostBody
             // 
             this.labelPostBody.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.postBindingSource, "Message", true));
-            this.labelPostBody.Location = new System.Drawing.Point(14, 16);
-            this.labelPostBody.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelPostBody.Location = new System.Drawing.Point(19, 20);
             this.labelPostBody.Name = "labelPostBody";
-            this.labelPostBody.Size = new System.Drawing.Size(211, 145);
+            this.labelPostBody.Size = new System.Drawing.Size(281, 178);
             this.labelPostBody.TabIndex = 1;
             // 
             // postBindingSource
@@ -655,20 +645,19 @@ namespace FacebookDeskAppUI
             // labelPostName
             // 
             this.labelPostName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.postBindingSource, "Name", true));
-            this.labelPostName.Location = new System.Drawing.Point(32, 23);
-            this.labelPostName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelPostName.Location = new System.Drawing.Point(43, 28);
             this.labelPostName.Name = "labelPostName";
-            this.labelPostName.Size = new System.Drawing.Size(211, 19);
+            this.labelPostName.Size = new System.Drawing.Size(281, 23);
             this.labelPostName.TabIndex = 3;
             // 
             // pictureBoxPostPhoto
             // 
             this.pictureBoxPostPhoto.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.postBindingSource, "PictureURL", true));
             this.pictureBoxPostPhoto.DataBindings.Add(new System.Windows.Forms.Binding("ImageLocation", this.postBindingSource, "PictureURL", true));
-            this.pictureBoxPostPhoto.Location = new System.Drawing.Point(17, 240);
-            this.pictureBoxPostPhoto.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxPostPhoto.Location = new System.Drawing.Point(23, 295);
+            this.pictureBoxPostPhoto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxPostPhoto.Name = "pictureBoxPostPhoto";
-            this.pictureBoxPostPhoto.Size = new System.Drawing.Size(238, 105);
+            this.pictureBoxPostPhoto.Size = new System.Drawing.Size(317, 129);
             this.pictureBoxPostPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPostPhoto.TabIndex = 5;
             this.pictureBoxPostPhoto.TabStop = false;
@@ -676,10 +665,11 @@ namespace FacebookDeskAppUI
             // tabAbout
             // 
             this.tabAbout.Controls.Add(this.panel10);
-            this.tabAbout.Location = new System.Drawing.Point(4, 22);
+            this.tabAbout.Location = new System.Drawing.Point(4, 25);
+            this.tabAbout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabAbout.Name = "tabAbout";
-            this.tabAbout.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAbout.Size = new System.Drawing.Size(552, 405);
+            this.tabAbout.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabAbout.Size = new System.Drawing.Size(739, 501);
             this.tabAbout.TabIndex = 7;
             this.tabAbout.Text = "About";
             this.tabAbout.UseVisualStyleBackColor = true;
@@ -693,70 +683,78 @@ namespace FacebookDeskAppUI
             this.panel10.Controls.Add(this.labelAboutBirthYear);
             this.panel10.Controls.Add(this.labelAboutName);
             this.panel10.Controls.Add(this.pictureBoxAboutPhoto);
-            this.panel10.Location = new System.Drawing.Point(75, 58);
+            this.panel10.Location = new System.Drawing.Point(100, 71);
+            this.panel10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(358, 283);
+            this.panel10.Size = new System.Drawing.Size(477, 348);
             this.panel10.TabIndex = 3;
             // 
             // labelAboutBirthYearVal
             // 
             this.labelAboutBirthYearVal.AutoSize = true;
-            this.labelAboutBirthYearVal.Location = new System.Drawing.Point(165, 182);
+            this.labelAboutBirthYearVal.Location = new System.Drawing.Point(220, 224);
+            this.labelAboutBirthYearVal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAboutBirthYearVal.Name = "labelAboutBirthYearVal";
-            this.labelAboutBirthYearVal.Size = new System.Drawing.Size(35, 13);
+            this.labelAboutBirthYearVal.Size = new System.Drawing.Size(46, 17);
             this.labelAboutBirthYearVal.TabIndex = 7;
             this.labelAboutBirthYearVal.Text = "empty";
             // 
             // labelAboutGenderVal
             // 
             this.labelAboutGenderVal.AutoSize = true;
-            this.labelAboutGenderVal.Location = new System.Drawing.Point(159, 159);
+            this.labelAboutGenderVal.Location = new System.Drawing.Point(212, 196);
+            this.labelAboutGenderVal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAboutGenderVal.Name = "labelAboutGenderVal";
-            this.labelAboutGenderVal.Size = new System.Drawing.Size(35, 13);
+            this.labelAboutGenderVal.Size = new System.Drawing.Size(46, 17);
             this.labelAboutGenderVal.TabIndex = 6;
             this.labelAboutGenderVal.Text = "empty";
             // 
             // labelAboutNameVal
             // 
             this.labelAboutNameVal.AutoSize = true;
-            this.labelAboutNameVal.Location = new System.Drawing.Point(152, 16);
+            this.labelAboutNameVal.Location = new System.Drawing.Point(203, 20);
+            this.labelAboutNameVal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAboutNameVal.Name = "labelAboutNameVal";
-            this.labelAboutNameVal.Size = new System.Drawing.Size(35, 13);
+            this.labelAboutNameVal.Size = new System.Drawing.Size(46, 17);
             this.labelAboutNameVal.TabIndex = 5;
             this.labelAboutNameVal.Text = "empty";
             // 
             // labelAboutGender
             // 
             this.labelAboutGender.AutoSize = true;
-            this.labelAboutGender.Location = new System.Drawing.Point(108, 159);
+            this.labelAboutGender.Location = new System.Drawing.Point(144, 196);
+            this.labelAboutGender.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAboutGender.Name = "labelAboutGender";
-            this.labelAboutGender.Size = new System.Drawing.Size(45, 13);
+            this.labelAboutGender.Size = new System.Drawing.Size(60, 17);
             this.labelAboutGender.TabIndex = 4;
             this.labelAboutGender.Text = "Gender:";
             // 
             // labelAboutBirthYear
             // 
             this.labelAboutBirthYear.AutoSize = true;
-            this.labelAboutBirthYear.Location = new System.Drawing.Point(105, 182);
+            this.labelAboutBirthYear.Location = new System.Drawing.Point(140, 224);
+            this.labelAboutBirthYear.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAboutBirthYear.Name = "labelAboutBirthYear";
-            this.labelAboutBirthYear.Size = new System.Drawing.Size(54, 13);
+            this.labelAboutBirthYear.Size = new System.Drawing.Size(73, 17);
             this.labelAboutBirthYear.TabIndex = 3;
             this.labelAboutBirthYear.Text = "Birth year:";
             // 
             // labelAboutName
             // 
             this.labelAboutName.AutoSize = true;
-            this.labelAboutName.Location = new System.Drawing.Point(106, 16);
+            this.labelAboutName.Location = new System.Drawing.Point(141, 20);
+            this.labelAboutName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAboutName.Name = "labelAboutName";
-            this.labelAboutName.Size = new System.Drawing.Size(38, 13);
+            this.labelAboutName.Size = new System.Drawing.Size(49, 17);
             this.labelAboutName.TabIndex = 1;
             this.labelAboutName.Text = "Name:";
             // 
             // pictureBoxAboutPhoto
             // 
-            this.pictureBoxAboutPhoto.Location = new System.Drawing.Point(108, 42);
+            this.pictureBoxAboutPhoto.Location = new System.Drawing.Point(144, 52);
+            this.pictureBoxAboutPhoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxAboutPhoto.Name = "pictureBoxAboutPhoto";
-            this.pictureBoxAboutPhoto.Size = new System.Drawing.Size(110, 102);
+            this.pictureBoxAboutPhoto.Size = new System.Drawing.Size(147, 126);
             this.pictureBoxAboutPhoto.TabIndex = 0;
             this.pictureBoxAboutPhoto.TabStop = false;
             // 
@@ -767,35 +765,45 @@ namespace FacebookDeskAppUI
             this.tabControl2.Controls.Add(this.tabPhotos);
             this.tabControl2.Controls.Add(this.tabFriends);
             this.tabControl2.Controls.Add(this.tabGroups);
-            this.tabControl2.Location = new System.Drawing.Point(22, 18);
-            this.tabControl2.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControl2.Location = new System.Drawing.Point(29, 22);
+            this.tabControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(560, 431);
+            this.tabControl2.Size = new System.Drawing.Size(747, 530);
             this.tabControl2.TabIndex = 14;
             this.tabControl2.Tag = "fds";
             // 
             // checkBoxRememberMe
             // 
             this.checkBoxRememberMe.AutoSize = true;
-            this.checkBoxRememberMe.Location = new System.Drawing.Point(638, 356);
-            this.checkBoxRememberMe.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxRememberMe.Location = new System.Drawing.Point(851, 438);
+            this.checkBoxRememberMe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxRememberMe.Name = "checkBoxRememberMe";
-            this.checkBoxRememberMe.Size = new System.Drawing.Size(95, 17);
+            this.checkBoxRememberMe.Size = new System.Drawing.Size(122, 21);
             this.checkBoxRememberMe.TabIndex = 15;
             this.checkBoxRememberMe.Text = "Remember Me";
             this.checkBoxRememberMe.UseVisualStyleBackColor = true;
             // 
+            // labelPostsSubFilter
+            // 
+            this.labelPostsSubFilter.AutoSize = true;
+            this.labelPostsSubFilter.Location = new System.Drawing.Point(19, 95);
+            this.labelPostsSubFilter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPostsSubFilter.Name = "labelPostsSubFilter";
+            this.labelPostsSubFilter.Size = new System.Drawing.Size(0, 17);
+            this.labelPostsSubFilter.TabIndex = 5;
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.checkBoxRememberMe);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.pictureBoxProfilePhoto);
             this.Controls.Add(this.labelProfileName);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.Text = "MainForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfilePhoto)).EndInit();
@@ -849,7 +857,6 @@ namespace FacebookDeskAppUI
         private System.Windows.Forms.Label labelCreatePost;
         private System.Windows.Forms.ComboBox comboBoxPostsFilter;
         private System.Windows.Forms.Label labelPostsFilter;
-        private System.Windows.Forms.Label labelPostsSubFilter;
         private System.Windows.Forms.ListBox listBoxPosts;
         private System.Windows.Forms.ComboBox comboBoxPostsSubFilter;
         private System.Windows.Forms.Panel panelPost;
@@ -887,5 +894,6 @@ namespace FacebookDeskAppUI
         private System.Windows.Forms.Button buttonBestHourToPostByComments;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonBestHourToPostByLikes;
+        private System.Windows.Forms.Label labelPostsSubFilter;
     }
 }

@@ -1,29 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookDeskAppLogic
 {
     public abstract class GetBestTimeForStatusBase
     {
-
-        public int GetBestTimeForStatus(User i_User)
+        public int GetBestTimeForStatus(PostsCollection i_Posts)
         {
             MeasurePostsCounter[] measurePostsCounterArray = new MeasurePostsCounter[24];
-            calcTotalMeasureOfPostTime(i_User, measurePostsCounterArray);
+            calcTotalMeasureOfPostTime(i_Posts, measurePostsCounterArray);
             int hourWithMaxMeasurePerPost = generateBestHourByTotalMeasure(measurePostsCounterArray);
             return hourWithMaxMeasurePerPost;
         }
 
-        private void calcTotalMeasureOfPostTime(User i_User, MeasurePostsCounter[] i_MeasurePostsCounterArray)
+        private void calcTotalMeasureOfPostTime(PostsCollection i_Posts, MeasurePostsCounter[] i_MeasurePostsCounterArray)
         {
-            foreach (Post post in i_User.Posts)
+            IEnumerator<Post> postsIterator = i_Posts.GetEnumerator();
+            while(postsIterator.MoveNext())
             {
                 // get post time
                 try
                 {
-                    DateTime time = post.CreatedTime.GetValueOrDefault();
+                    DateTime time = postsIterator.Current.CreatedTime.GetValueOrDefault();
                     int hour = time.Hour;
-                    int totalMeasure = calcTotalMeasureOfPost(post);
+                    int totalMeasure = CalcTotalMeasureOfPost(postsIterator.Current);
                     i_MeasurePostsCounterArray[hour].AddMeasureAndIncPosts(totalMeasure);
                 }
                 catch (Exception ex)
@@ -50,6 +51,6 @@ namespace FacebookDeskAppLogic
             return hourWithMaxMeasurePerPost;
         }
 
-        public abstract int calcTotalMeasureOfPost(Post i_Post);
+        protected abstract int CalcTotalMeasureOfPost(Post i_Post);
     }
 }

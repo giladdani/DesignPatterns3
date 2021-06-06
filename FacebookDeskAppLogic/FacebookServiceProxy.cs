@@ -58,7 +58,7 @@ namespace FacebookDeskAppLogic
         // Public Methods
         public static LoginResult Login(string i_AppId, params string[] i_Permissions)
         {
-            LoginResult result = null;
+            LoginResult result;
             try
             {
                 UserSettings userSettings = loadFromFile();
@@ -81,7 +81,7 @@ namespace FacebookDeskAppLogic
 
         public static LoginResult Login(string i_AppId, string i_Permissions)
         {
-            LoginResult result = null;
+            LoginResult result;
             try
             {
                 UserSettings userSettings = loadFromFile();

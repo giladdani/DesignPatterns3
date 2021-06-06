@@ -11,10 +11,9 @@ namespace FacebookDeskAppUI
     {
         // Private Members
         private const string k_AllTitle = "All";
-        private const string k_PlacesTitle = "Places";
         private const string k_CommentsTitle = "Comments";
         private const string k_LikesTitle = "Likes";
-        private static readonly object Sr_lock = new object();
+        private static readonly object sr_lock = new object();
         private LoggedinUserData m_LoggedInUserData;
 
         // Constructor
@@ -28,10 +27,9 @@ namespace FacebookDeskAppUI
         //------------------------  General Methods  ---------------------------//
         //----------------------------------------------------------------------//
         //----------------------------------------------------------------------//
-
         private void setListBox<T>(IEnumerator<T> i_Iterator, ListBox i_ListBox)
         {
-            lock (Sr_lock)
+            lock (sr_lock)
             {
                 i_ListBox.Items.Clear();
                 while(i_Iterator.MoveNext())
@@ -46,25 +44,21 @@ namespace FacebookDeskAppUI
         //------------------- Setting ListBox of posts Methods------------------//
         //----------------------------------------------------------------------//
         //----------------------------------------------------------------------//
-
-        private void setPostsListByPlaces(string i_PlaceName)
-        {
-            ICollection<Post> listOfPosts = m_LoggedInUserData.GetPostsByPlaceName(i_PlaceName);
-            if(listOfPosts != null)
-            {
-                ICollection<PostWrapper> listOfPostsWrapper = generateListOfPostsWrappers(listOfPosts);
-                setListBox(listOfPostsWrapper.GetEnumerator(), listBoxPosts);
-            }
-        }
-
-        private void setListBoxPostsOfCommentsOrLikes(PostsCollection.IteratorType i_IteratorType, int i_Num)
+        private void setListBoxPostsOfCommentsOrLikes(PostsCollection.eIteratorType i_IteratorType, int i_Num)
         {
             IStrategy strategy = m_LoggedInUserData.CreateStrategyByCategory(i_Num);
             IEnumerator<Post> postsIterator = m_LoggedInUserData.PostsCollection.GetEnumerator(i_IteratorType, strategy);
             listBoxPosts.Items.Clear();
-            while (postsIterator.MoveNext())
+            try
             {
-                listBoxPosts.Items.Add(new PostWrapper(postsIterator.Current));
+                while(postsIterator.MoveNext())
+                {
+                    listBoxPosts.Items.Add(new PostWrapper(postsIterator.Current));
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Could not fetch posts by likes or comments");
             }
         }
 
@@ -103,14 +97,6 @@ namespace FacebookDeskAppUI
             {
                 comboBoxPostsSubFilter.Items.Add(option);
             }
-        }
-
-        private void setComboboxPostsSubFilterByPlaces()
-        {
-            labelPostsSubFilter.Text = "Filter by places";
-            m_LoggedInUserData.FetchPostsByPlaces();
-            List<string> listOfPlacesNames = m_LoggedInUserData.GetPlaceNamesOfPosts();
-            setComboboxPostsSubFilter(listOfPlacesNames);
         }
 
         private void setComboboxPostsSubFilterByLikes()
@@ -156,6 +142,7 @@ namespace FacebookDeskAppUI
             {
                 num = 100;
             }
+
             return num;
         }
 
@@ -165,19 +152,13 @@ namespace FacebookDeskAppUI
             string optionOfSubFilter = comboBoxPostsSubFilter.Text;
             int optionOfSubFilterNum = getNumericValueOfSubFilter(optionOfSubFilter);
             listBoxPosts.Items.Clear();
-
-            if(optionOfFilter == k_PlacesTitle)
+            if(optionOfFilter == k_LikesTitle)
             {
-                setPostsListByPlaces(optionOfSubFilter);
-            }
-            else if(optionOfFilter == k_LikesTitle)
-            {
-                
-                setListBoxPostsOfCommentsOrLikes(PostsCollection.IteratorType.LIKES, optionOfSubFilterNum);
+                setListBoxPostsOfCommentsOrLikes(PostsCollection.eIteratorType.LIKES, optionOfSubFilterNum);
             }
             else if(optionOfFilter == k_CommentsTitle)
             {
-                setListBoxPostsOfCommentsOrLikes(PostsCollection.IteratorType.COMMENTS, optionOfSubFilterNum);
+                setListBoxPostsOfCommentsOrLikes(PostsCollection.eIteratorType.COMMENTS, optionOfSubFilterNum);
             }
         }
 
@@ -192,7 +173,6 @@ namespace FacebookDeskAppUI
             labelPostsSubFilter.Visible = false;
             comboBoxPostsFilter.Items.Clear();
             comboBoxPostsFilter.Items.Add(k_AllTitle);
-            comboBoxPostsFilter.Items.Add(k_PlacesTitle);
             comboBoxPostsFilter.Items.Add(k_LikesTitle);
             comboBoxPostsFilter.Items.Add(k_CommentsTitle);
         }
@@ -205,11 +185,6 @@ namespace FacebookDeskAppUI
                 comboBoxPostsSubFilter.Visible = false;
                 labelPostsSubFilter.Visible = false;
                 setListBoxPostsByListOfAll();
-            }
-            else if(category == k_PlacesTitle)
-            {
-                setGeneralOptionsToSubFilterComponents();
-                setComboboxPostsSubFilterByPlaces();
             }
             else if(category == k_LikesTitle)
             {
@@ -276,23 +251,11 @@ namespace FacebookDeskAppUI
         //---------------------------Wrapper Methods----------------------------//
         //----------------------------------------------------------------------//
         //----------------------------------------------------------------------//
-        private ICollection<PostWrapper> generateListOfPostsWrappers(ICollection<Post> i_ListOfPosts)
-        {
-            ICollection<PostWrapper> listOfPostWrapper = new List<PostWrapper>();
-            foreach(Post post in i_ListOfPosts)
-            {
-                PostWrapper postWrapper = new PostWrapper(post);
-                listOfPostWrapper.Add(postWrapper);
-            }
-
-            return listOfPostWrapper;
-        }
-
         private void buttonCreatePost_Click(object sender, EventArgs e)
         {
             try
             {
-                Status postedStatus = m_LoggedInUserData.User.PostStatus(richTextBoxCreatePost.Text);
+                m_LoggedInUserData.User.PostStatus(richTextBoxCreatePost.Text);
                 MessageBox.Show("Post was published successfully!");
             }
             catch(Exception)
@@ -392,7 +355,7 @@ namespace FacebookDeskAppUI
         {
             try
             {
-                int bestHourToPost = m_LoggedInUserData.GetBestTimeForStatus(getBestTimeForStatus); ;
+                int bestHourToPost = m_LoggedInUserData.GetBestTimeForStatus(getBestTimeForStatus);
                 labelBestHourToPostVal.Text = $"Best hour to post: {bestHourToPost}:00";
             }
             catch(Exception)

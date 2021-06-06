@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace FacebookDeskAppLogic
+﻿namespace FacebookDeskAppLogic
 {
-    class OneDigitStrategy : IStrategy
+    internal class OneDigitStrategy : IStrategy
     {
         public bool TestNumber(int i_Num)
         {

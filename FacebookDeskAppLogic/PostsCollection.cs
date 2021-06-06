@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookDeskAppLogic
@@ -12,9 +9,8 @@ namespace FacebookDeskAppLogic
     {
         // Private Members
         private FacebookObjectCollection<Post> m_Posts;
-        IteratorType m_IteratorType;
 
-        public enum IteratorType
+        public enum eIteratorType
         {
             COMMENTS,
             LIKES,
@@ -30,30 +26,30 @@ namespace FacebookDeskAppLogic
         // Public Methods
         public IEnumerator<Post> GetEnumerator()
         {
-            return new PostsIterator(this, IteratorType.ALL, null);
+            return new PostsIterator(this, eIteratorType.ALL, null);
         }
 
-        public IEnumerator<Post> GetEnumerator(IteratorType i_IteratorType, IStrategy i_Strategy)
+        public IEnumerator<Post> GetEnumerator(eIteratorType i_IteratorType, IStrategy i_Strategy)
         {
             return new PostsIterator(this, i_IteratorType, i_Strategy);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return new PostsIterator(this, IteratorType.ALL, null);
+            return new PostsIterator(this, eIteratorType.ALL, null);
         }
 
         // Iterator class
         private class PostsIterator : IEnumerator<Post>
         {
             // Private Members
-            private int m_CurrentPostIdx;
-            private readonly IteratorType m_IteratorType;
+            private readonly eIteratorType m_IteratorType;
             private readonly IStrategy m_FilterStrategy;
+            private int m_CurrentPostIdx;
             private PostsCollection m_PostsCollection;
 
             // Constructor
-            public PostsIterator(PostsCollection i_PostsCollection, IteratorType i_IteratorType, IStrategy i_Strategy)
+            public PostsIterator(PostsCollection i_PostsCollection, eIteratorType i_IteratorType, IStrategy i_Strategy)
             {
                 m_PostsCollection = i_PostsCollection;
                 m_IteratorType = i_IteratorType;
@@ -80,36 +76,35 @@ namespace FacebookDeskAppLogic
             {
                 Post currentPost;
                 int count;
-                
+                bool isValid = false;
                 m_CurrentPostIdx++;
 
-                if(m_IteratorType == IteratorType.ALL)
+                if(m_IteratorType == eIteratorType.ALL)
                 {
                     if(m_CurrentPostIdx < m_PostsCollection.m_Posts.Count)
                     {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
+                        isValid = true;
                     }
                 }
-
-                while (m_CurrentPostIdx < m_PostsCollection.m_Posts.Count)
+                else
                 {
-                    currentPost = m_PostsCollection.m_Posts[m_CurrentPostIdx];
-                    count = countByIteratorType(m_PostsCollection.m_IteratorType, currentPost);
-                    if (m_FilterStrategy.TestNumber(count))
+                    while (m_CurrentPostIdx < m_PostsCollection.m_Posts.Count)
                     {
-                        return true;
-                    }
-                    else
-                    {
-                        m_CurrentPostIdx++;
+                        currentPost = m_PostsCollection.m_Posts[m_CurrentPostIdx];
+                        count = countByIteratorType(m_IteratorType, currentPost);
+                        if (m_FilterStrategy.TestNumber(count))
+                        {
+                            isValid = true;
+                            break;
+                        }
+                        else
+                        {
+                            m_CurrentPostIdx++;
+                        }
                     }
                 }
 
-                return false;
+                return isValid;
             }
 
             public void Reset()
@@ -118,20 +113,27 @@ namespace FacebookDeskAppLogic
             }
 
             // Private Methods
-            private int countByIteratorType(IteratorType i_IteratorType, Post i_Post)
+            private int countByIteratorType(eIteratorType i_IteratorType, Post i_Post)
             {
-                int count = 0;
-                switch(i_IteratorType)
+                try
                 {
-                    case IteratorType.COMMENTS:
-                        count = i_Post.Comments.Count;
-                        break;
-                    case IteratorType.LIKES:
-                        count = i_Post.LikedBy.Count;
-                        break;
-                }
+                    int count = 0;
+                    switch(i_IteratorType)
+                    {
+                        case eIteratorType.COMMENTS:
+                            count = i_Post.Comments.Count;
+                            break;
+                        case eIteratorType.LIKES:
+                            count = i_Post.LikedBy.Count;
+                            break;
+                    }
 
-                return count;
+                    return count;
+                }
+                catch(Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
     }

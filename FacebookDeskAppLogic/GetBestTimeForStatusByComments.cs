@@ -8,7 +8,7 @@ namespace FacebookDeskAppLogic
 {
     public class GetBestTimeForStatusByComments : GetBestTimeForStatusBase
     {
-        public override int calcTotalMeasureOfPost(Post i_Post)
+        protected override int CalcTotalMeasureOfPost(Post i_Post)
         {
             return i_Post.Comments.Count;
         }

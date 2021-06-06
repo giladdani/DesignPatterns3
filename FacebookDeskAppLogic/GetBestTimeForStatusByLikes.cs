@@ -8,7 +8,7 @@ namespace FacebookDeskAppLogic
 {
     public class GetBestTimeForStatusByLikes : GetBestTimeForStatusBase
     {
-        public override int calcTotalMeasureOfPost(Post i_Post)
+        protected override int CalcTotalMeasureOfPost(Post i_Post)
         {
             return i_Post.LikedBy.Count;
         }
