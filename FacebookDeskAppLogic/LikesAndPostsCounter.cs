@@ -1,41 +1,41 @@
 ﻿namespace FacebookDeskAppLogic
 {
-    public class LikesAndPostsCounter
+    public class MeasurePostsCounter
     {
         // Private Members
-        private int m_TotalLikes;
+        private int m_TotalMeasure;
         private int m_NumOfPosts;
 
         // Constructors
-        public LikesAndPostsCounter()
+        public MeasurePostsCounter()
         {
-            m_TotalLikes = 0;
+            m_TotalMeasure = 0;
             m_NumOfPosts = 0;
         }
 
         // Public Methods
-        public double CalcAvgLikesPerPost()
+        public double CalcAvgMeasurePerPost()
         {
-            return (double)m_TotalLikes / m_NumOfPosts;
+            return (double)m_TotalMeasure / m_NumOfPosts;
         }
 
-        public void AddLikesAndIncPosts(int i_NumOfLikes)
+        public void AddMeasureAndIncPosts(int i_TotalMeasure)
         {
-            m_TotalLikes += i_NumOfLikes;
+            m_TotalMeasure += i_TotalMeasure;
             m_NumOfPosts++;
         }
 
         // Properties
-        public int TotalLikes
+        public int TotalMeasure
         {
             get
             {
-                return m_TotalLikes;
+                return m_TotalMeasure;
             }
 
             set
             {
-                m_TotalLikes = value;
+                m_TotalMeasure = value;
             }
         }
 

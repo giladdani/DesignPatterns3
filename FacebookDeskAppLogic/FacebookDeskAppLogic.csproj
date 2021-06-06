@@ -37,6 +37,9 @@
   <ItemGroup>
     <Compile Include="AboveTwoDigitsStrategy.cs" />
     <Compile Include="FacebookServiceProxy.cs" />
+    <Compile Include="GetBestTimeForStatusBase.cs" />
+    <Compile Include="GetBestTimeForStatusByComments.cs" />
+    <Compile Include="GetBestTimeForStatusByLikes.cs" />
     <Compile Include="IStrategy.cs" />
     <Compile Include="LikesAndPostsCounter.cs" />
     <Compile Include="LoggedinUserData.cs" />
