@@ -24,12 +24,14 @@ namespace FacebookDeskAppLogic
         // Constructor
         public PostsCollection(FacebookObjectCollection<Post> i_Posts)
         {
+            m_Posts = new List<Post>();
             foreach (Post post in i_Posts)
             {
                 m_Posts.Add(post);
             }
         }
 
+        // Public Methods
         public IEnumerator<Post> GetEnumerator()
         {
             return new PostsIterator(this, IteratorType.ALL, null);
@@ -48,11 +50,13 @@ namespace FacebookDeskAppLogic
         // Iterator class
         private class PostsIterator : IEnumerator<Post>
         {
+            // Private Members
             private int m_CurrentPostIdx;
             private readonly IteratorType m_IteratorType;
             private readonly IStrategy m_FilterStrategy;
             private PostsCollection m_PostsCollection;
 
+            // Constructor
             public PostsIterator(PostsCollection i_PostsCollection, IteratorType i_IteratorType, IStrategy i_Strategy)
             {
                 m_PostsCollection = i_PostsCollection;
@@ -60,6 +64,7 @@ namespace FacebookDeskAppLogic
                 m_FilterStrategy = i_Strategy;
             }
 
+            // Public Methods
             public Post Current
             {
                 get { return m_PostsCollection.m_Posts[m_CurrentPostIdx]; }
@@ -84,7 +89,14 @@ namespace FacebookDeskAppLogic
 
                 if(m_IteratorType == IteratorType.ALL)
                 {
-                    return true;
+                    if(m_CurrentPostIdx < m_PostsCollection.m_Posts.Count)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
 
                 while (m_CurrentPostIdx < m_PostsCollection.m_Posts.Count)
@@ -109,7 +121,8 @@ namespace FacebookDeskAppLogic
                 m_CurrentPostIdx = -1;
             }
 
-            public int countByIteratorType(IteratorType i_IteratorType, Post i_Post)
+            // Private Methods
+            private int countByIteratorType(IteratorType i_IteratorType, Post i_Post)
             {
                 int count = 0;
                 switch(i_IteratorType)
@@ -121,6 +134,7 @@ namespace FacebookDeskAppLogic
                         count = i_Post.LikedBy.Count;
                         break;
                 }
+
                 return count;
             }
         }
