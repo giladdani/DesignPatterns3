@@ -6,7 +6,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookDeskAppLogic
 {
-    class GetBestTimeForStatusByLikes : GetBestTimeForStatusBase
+    public class GetBestTimeForStatusByLikes : GetBestTimeForStatusBase
     {
         public override int calcTotalMeasureOfPost(Post i_Post)
         {

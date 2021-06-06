@@ -15,11 +15,30 @@ namespace FacebookDeskAppLogic
         private ICollection<Album> m_ListOfAlbums = new List<Album>();
         private ICollection<User> m_ListOfFriends = new List<User>();
         private ICollection<Group> m_ListOfGroups = new List<Group>();
+        private readonly GetBestTimeForStatusByComments m_GetBestTimeForStatusByComments = new GetBestTimeForStatusByComments();
+        private readonly GetBestTimeForStatusByLikes m_GetBestTimeForStatusByLikes = new GetBestTimeForStatusByLikes();
 
         // Constructors
         private LoggedinUserData()
         {
         }
+
+        public GetBestTimeForStatusByLikes GetBestTimeForStatusByLikes
+        {
+            get
+            {
+                return m_GetBestTimeForStatusByLikes;
+            }
+        }
+
+        public GetBestTimeForStatusByComments GetBestTimeForStatusByComments
+        {
+            get
+            {
+                return m_GetBestTimeForStatusByComments;
+            }
+        }
+
 
         // Properties
         public LoginResult LoginResult
@@ -215,39 +234,6 @@ namespace FacebookDeskAppLogic
         //--------------------Feature bestTimeForStatus methods-----------------//
         //----------------------------------------------------------------------//
         //----------------------------------------------------------------------//
-        public int GetBestTimeForStatus()
-        {
-            int hourWithMaxLikesPerPost = -1;
-            LikesAndPostsCounter[] likesAndPostCounterArray = new LikesAndPostsCounter[24];
-            foreach (Post post in m_User.Posts)
-            {
-                // get post time
-                try
-                {
-                    DateTime time = post.CreatedTime.GetValueOrDefault();
-                    int hour = time.Hour;
-                    int numOfLikes = post.LikedBy.Count;
-                    likesAndPostCounterArray[hour].AddLikesAndIncPosts(numOfLikes);
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-
-            double max = -1;
-            for (int i = 0; i < 24; i++)
-            {
-                LikesAndPostsCounter counter = likesAndPostCounterArray[i];
-                if (counter.CalcAvgLikesPerPost() > max)
-                {
-                    hourWithMaxLikesPerPost = i;
-                    max = counter.CalcAvgLikesPerPost();
-                }
-            }
-
-            return hourWithMaxLikesPerPost;
-        }
 
 
         public IStrategy CreateStrategyByCategory(int i_NumCategory)
@@ -270,6 +256,11 @@ namespace FacebookDeskAppLogic
             }
 
             return strategy;
+        }
+
+        public int GetBestTimeForStatus(GetBestTimeForStatusBase i_GetBestTimeForStatus)
+        {
+            return i_GetBestTimeForStatus.GetBestTimeForStatus(m_User);
         }
     }
 }

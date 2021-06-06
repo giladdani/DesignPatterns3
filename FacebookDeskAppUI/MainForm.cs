@@ -288,19 +288,6 @@ namespace FacebookDeskAppUI
             return listOfPostWrapper;
         }
 
-        private void buttonBestHourToPost_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int bestHourToPost = m_LoggedInUserData.GetBestTimeForStatus();
-                labelBestHourToPostVal.Text = $"Best hour to post: {bestHourToPost}:00";
-            }
-            catch(Exception)
-            {
-                MessageBox.Show("Could not calculate Best time :(");
-            }
-        }
-
         private void buttonCreatePost_Click(object sender, EventArgs e)
         {
             try
@@ -399,6 +386,29 @@ namespace FacebookDeskAppUI
         {
             bool isChecked = checkBoxRememberMe.Checked;
             return isChecked;
+        }
+
+        private void bestTimeToPost(GetBestTimeForStatusBase getBestTimeForStatus)
+        {
+            try
+            {
+                int bestHourToPost = m_LoggedInUserData.GetBestTimeForStatus(getBestTimeForStatus); ;
+                labelBestHourToPostVal.Text = $"Best hour to post: {bestHourToPost}:00";
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Could not calculate Best time :(");
+            }
+        }
+
+        private void buttonBestHourToPostByLikes_Click(object sender, EventArgs e)
+        {
+            bestTimeToPost(m_LoggedInUserData.GetBestTimeForStatusByLikes);
+        }
+
+        private void buttonBestHourToPostByComments_Click(object sender, EventArgs e)
+        {
+            bestTimeToPost(m_LoggedInUserData.GetBestTimeForStatusByComments);
         }
     }
 }

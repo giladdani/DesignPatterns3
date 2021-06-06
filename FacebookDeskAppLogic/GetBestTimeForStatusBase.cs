@@ -3,7 +3,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookDeskAppLogic
 {
-    abstract class GetBestTimeForStatusBase
+    public abstract class GetBestTimeForStatusBase
     {
 
         public int GetBestTimeForStatus(User i_User)
