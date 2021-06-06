@@ -10,7 +10,7 @@ namespace FacebookDeskAppLogic
     {
         public override int calcTotalMeasureOfPost(Post i_Post)
         {
-            return i_Post.LikedBy.Count();
+            return i_Post.LikedBy.Count;
         }
     }
 }

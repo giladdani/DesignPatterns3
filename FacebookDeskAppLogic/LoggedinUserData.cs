@@ -110,7 +110,7 @@ namespace FacebookDeskAppLogic
         //----------------------------------------------------------------------//
         public void FetchPosts()
         {
-            PostsCollection = new PostsCollection(m_User.Posts);
+            PostsCollection = new PostsCollection(m_User);
         }
 
         public void FetchPostsByPlaces()
