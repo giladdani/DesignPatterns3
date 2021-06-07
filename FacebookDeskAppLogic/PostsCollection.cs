@@ -72,7 +72,7 @@ namespace FacebookDeskAppLogic
                 Reset();
             }
 
-            public bool MoveNext()
+           /* public bool MoveNext()
             {
                 Post currentPost;
                 int count;
@@ -105,7 +105,40 @@ namespace FacebookDeskAppLogic
                 }
 
                 return isValid;
+            }*/
+
+            public bool MoveNext()
+            {
+                Post currentPost;
+                int count;
+                bool isValid = false;
+
+                m_CurrentPostIdx++;
+
+                if (m_CurrentPostIdx < m_PostsCollection.m_Posts.Count)
+                {
+                    if (m_IteratorType == eIteratorType.ALL)
+                    {
+                        isValid = true;
+                    }
+                    else
+                    {
+                        currentPost = m_PostsCollection.m_Posts[m_CurrentPostIdx];
+                        count = countByIteratorType(m_IteratorType, currentPost);
+                        if (m_FilterStrategy.TestNumber(count))
+                        {
+                            isValid = true;
+                        }
+                        else
+                        {
+                            isValid = MoveNext();
+                        }
+                    }
+                }
+
+                return isValid;
             }
+
 
             public void Reset()
             {
