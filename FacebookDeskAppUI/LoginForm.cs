@@ -46,7 +46,7 @@ namespace FacebookDeskAppUI
                 Singleton<LoggedinUserData>.Instance.User = result.LoggedInUser;
                 Singleton<LoggedinUserData>.Instance.PostsCollection = new PostsCollection(Singleton<LoggedinUserData>.Instance.User);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Login failed");
             }

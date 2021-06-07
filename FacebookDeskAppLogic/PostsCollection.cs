@@ -72,41 +72,6 @@ namespace FacebookDeskAppLogic
                 Reset();
             }
 
-           /* public bool MoveNext()
-            {
-                Post currentPost;
-                int count;
-                bool isValid = false;
-                m_CurrentPostIdx++;
-
-                if(m_IteratorType == eIteratorType.ALL)
-                {
-                    if(m_CurrentPostIdx < m_PostsCollection.m_Posts.Count)
-                    {
-                        isValid = true;
-                    }
-                }
-                else
-                {
-                    while (m_CurrentPostIdx < m_PostsCollection.m_Posts.Count)
-                    {
-                        currentPost = m_PostsCollection.m_Posts[m_CurrentPostIdx];
-                        count = countByIteratorType(m_IteratorType, currentPost);
-                        if (m_FilterStrategy.TestNumber(count))
-                        {
-                            isValid = true;
-                            break;
-                        }
-                        else
-                        {
-                            m_CurrentPostIdx++;
-                        }
-                    }
-                }
-
-                return isValid;
-            }*/
-
             public bool MoveNext()
             {
                 Post currentPost;
@@ -138,7 +103,6 @@ namespace FacebookDeskAppLogic
 
                 return isValid;
             }
-
 
             public void Reset()
             {
